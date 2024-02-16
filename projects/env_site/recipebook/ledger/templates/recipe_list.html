@@ -1,0 +1,18 @@
+<!-- ledger/templates/recipe_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Book</title>
+</head>
+<body>
+    <h1>Recipe Book</h1>
+    <h2>Recipes List</h2>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <a href="{{recipe.link}}">{{recipe.name}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
