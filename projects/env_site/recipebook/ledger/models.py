@@ -1,6 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils import timezone
 
+class Profile(models.Model):    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50,default='test')    
+    bio = models.TextField(default='')
+
+    def __string__(self):
+        return self.name
+    
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
@@ -9,6 +19,9 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 100)
+    author = models.CharField(max_length = 50, default='2')
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     def __string__(self):
         return self.name
